@@ -23,19 +23,20 @@ RUN apt-get update && \
     apt-get -y install sudo && \
     rm -rf /var/lib/apt/lists/*
     
-RUN adduser --disabled-password --gecos '' admin
-RUN adduser admin sudo
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# RUN adduser --disabled-password --gecos '' admin
+# RUN adduser admin sudo
+# RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-USER admin
+# USER admin
 
-RUN mkdir /home/admin/work
-
-ADD sparkify/ /home/admin/work/
-RUN pip install -r /home/admin/work/requirements.txt
+RUN mkdir /work
+#Copy source directories to container
+ADD sparkify/ /work/
+#RUN sudo chown daemon:daemon -R /home/admin/work/
+RUN pip install -r /work/requirements.txt
 
 # Define default command
-WORKDIR /home/admin/work
+WORKDIR /work
 ENTRYPOINT ["python3"]
 CMD ["sparkify.py"]
 

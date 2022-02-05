@@ -11,13 +11,42 @@
     <title>SparkApp</title>
 </head>
 <body>
-    <h1>House Sales Prediction App</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sparkify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            Igniting the container
+          </span>
+        </div>
+      </nav>
+    <center><h1>House Sales Prediction App</h1></center>
     <br>
-    <h2><p>Please enter the customer ID (an integer between 1 and 299)</p></h2>    
-    <form action="#" method="post" novalidate>
-        <p>Enter Customer ID:</p> 
-        <input type="text" name="cid" id="cid" name="cid">
-        <button type="submit" name="submit" value="Submit">Submit</button>
-    </form>
+    <br>
+    <h4><p>The following app runs a simple linear regression model using pyspark. To evaluate the predictions of the test data 
+        from the data set press evaluate.  Please note this evaluation could take sometime, so wait until the page loads. Press home in the navbar 
+        to go back to the home page.
+    </p></h4>    
+    <br>
+    <br>
+   <center><form action="#" method="post" novalidate>
+        <button class="btn btn-success btn-lg" type="submit" name="submit" value="Submit">Evaluate Prediction</button>
+    </form></center>
+    {% if title %}
+    {% block content %}{% endblock %}
+    {% endif %}
 </body>
 </html>
