@@ -12,21 +12,21 @@ def index():
     if request.method=="POST":
         customerID=request.form["cid"]
         ID=int(customerID)
-        return redirect(url_for('risk_status', custID=customerID))
+        return redirect(url_for('display', custID=customerID))
     else:
         ID=0
         return render_template("index.html")
     
 
-@spark_app.route("/risk/<custID>", methods=["GET","POST"])
-def risk_status(custID):
+@spark_app.route("/display/<custID>", methods=["GET","POST"])
+def display(custID):
     #This ID is essentially an an integer from 0 to 299: Here the assumption is the customer ID is 
     # an index of the test data. The loan officer who supplies the role can get the details of the applicant and also run the risk assessment themself.
     #The fetch raw data has not been implemented here. 
     custID=custID
     if request.method=="GET":
-        retval = utils.evaluate_risk(custID)
-        return render_template("predicter.html", customerID=custID, risk=retval)
+        #retval = utils.evaluate_risk(custID)
+        return render_template("display.html", customerID=custID)
     
     return render_template(url_for('record'), request.form("response"), custID)
     
